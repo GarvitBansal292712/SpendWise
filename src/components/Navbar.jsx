@@ -1,10 +1,10 @@
 import React from "react";
-import { CgProfile } from "react-icons/cg";
+import logo from "../assets/image/logo.png"
 import { MdAccountBalance } from "react-icons/md";
 const Navbar = () => {
   return (
     <>
-      <nav className="fixed top-0 z-50 w-full  bg-[#111111] dark:border-gray-700">
+      <nav className="fixed top-0 z-50 w-full  bg-[#000000] dark:border-gray-700 font-montserrat">
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start rtl:justify-end">
@@ -30,9 +30,9 @@ const Navbar = () => {
                   ></path>
                 </svg>
               </button>
-              <a href="https://flowbite.com" className="flex ms-2 md:me-24">
+              <a href="#" className="flex ms-2 md:me-24">
                 <img
-                  src="https://flowbite.com/docs/images/logo.svg"
+                  src={logo}
                   className="h-8 me-3"
                   alt="FlowBite Logo"
                 />
@@ -123,19 +123,20 @@ const Navbar = () => {
 
       <aside
         id="logo-sidebar"
-        className="fixed top-0 left-0 w-64 h-screen pt-20 transition-transform -translate-x-full bg-[#111111] md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        className="fixed top-0 left-0 w-64 h-screen pt-20 transition-transform -translate-x-full bg-[#000000] md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 pb-4 overflow-y-auto bg-[#111111] dark:bg-gray-800">
+        <div className="h-full px-3 pb-4 overflow-y-auto bg-[#000000] dark:bg-gray-800">
           <div className="flex flex-col justify-center gap-4 ">
             <div className="items-center flex justify-center">
-              <CgProfile
-                size={80}
-                className="text-white bg-gray-400 rounded-full"
+              <img
+                className="w-40 h-40 rounded-full"
+                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                alt="user photo"
               />
             </div>
             <div>
-              <h1 className="bg-[#1cdbcb] text-white p-2 flex items-center justify-center text-lg rounded-3xl">
+              <h1 className="bg-[#1a1a1a] text-white p-2 flex items-center justify-center text-lg rounded-3xl gap-4">
                 <MdAccountBalance size={20} />
                 $5,380
               </h1>
@@ -147,7 +148,7 @@ const Navbar = () => {
             <li className="">
               <a
                 href="#"
-                className="flex justify-center items-center p-2  rounded-3xl bg-[#a48ebe] text-white hover:bg-[#c594ff] text-center  group"
+                className="flex justify-center items-center p-2  rounded-3xl bg-[#1a1a1a] text-white hover:text-black hover:bg-[#1cdbcb] text-center  group"
               >
                 <span className="ms-3">Dashboard</span>
               </a>
@@ -155,12 +156,15 @@ const Navbar = () => {
             <li>
               <a
                 href="#"
-                className="flex justify-center items-center p-2  rounded-3xl bg-[#a48ebe] text-white hover:bg-[#c594ff] text-center group"
+                className="flex justify-center items-center p-2  rounded-3xl bg-[#1a1a1a] text-white hover:text-black hover:bg-[#1cdbcb] text-center group"
               >
                 <span className="ms-3">Transactions</span>
               </a>
             </li>
           </ul>
+          <div className="absolute bottom-0 mb-5">
+        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Spend Wise™</a> <br />By: Garvit Bansal. All Rights Reserved.</span>
+          </div>
         </div>
       </aside>
     </>

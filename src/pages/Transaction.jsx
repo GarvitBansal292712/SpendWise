@@ -4,28 +4,38 @@ const Transaction = () => {
   return (
 <>
 
-<div className='md:ml-[256px] mt-[200px]'>
+<div className='md:ml-[256px] mt-[200px] flex justify-center'>
 
-<form className="max-w-sm mx-auto bg-[#ffffff45] backdrop-blur-lg p-4 rounded-2xl">
-  <div className="mb-5">
-    <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-    <input type="email" id="email" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="name@flowbite.com" required />
-  </div>
-  <div className="mb-5">
-    <label for="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-    <input type="password" id="password" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
-  </div>
-  <div className="mb-5">
-    <label for="repeat-password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Repeat password</label>
-    <input type="password" id="repeat-password" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
-  </div>
-  <div className="flex items-start mb-5">
-    <div className="flex items-center h-5">
-      <input id="terms" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
-    </div>
-    <label for="terms" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" className="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a></label>
-  </div>
-  <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register new account</button>
+<form className=" mx-5 bg-[#1a1a1a] backdrop-blur-lg p-8 rounded-2xl w-[400px] text-white">
+    <h1 className='text-center text-[2rem] leading-10 mb-4'>
+        Add Your <i>Income</i> OR <i>Expense</i>
+    </h1>
+
+
+    <label for="number-input" class="block mb-2 text-sm font-medium text-white dark:text-white">Select a number:</label>
+    <input type="number" min={1} id="number-input" aria-describedby="helper-text-explanation" class="mb-5 bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5  dark:text-white " placeholder="90210" required />
+
+
+
+
+  <label for="countries" class="block mb-2 text-sm font-medium text-white dark:text-white">Select an option</label>
+  <select id="countries" class="bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5">
+    <option selected>Choose a country</option>
+    <option value="US">United States</option>
+    <option value="CA">Canada</option>
+    <option value="FR">France</option>
+    <option value="DE">Germany</option>
+  </select>
+
+<h1 className='my-4 text-[#ffffff60]'>
+
+  Today's Date: 27-01-2003 
+</h1>
+
+<div className='flex justify-center'>
+
+  <button type="submit" className="text-white my-2 bg-[#1cdbcb] hover:bg-[#1cdbcb8f] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit Entry</button>
+</div>
 </form>
 </div>
 
