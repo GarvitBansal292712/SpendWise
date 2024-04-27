@@ -12,14 +12,14 @@ const Transaction = () => {
     </h1>
 
 
-    <label for="number-input" class="block mb-2 text-sm font-medium text-white dark:text-white">Select a number:</label>
-    <input type="number" min={1} id="number-input" aria-describedby="helper-text-explanation" class="mb-5 bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5  dark:text-white " placeholder="90210" required />
+    <label for="number-input" className="block mb-2 text-sm font-medium text-white dark:text-white">Select a number:</label>
+    <input type="number" min={1} id="number-input" aria-describedby="helper-text-explanation" className="mb-5 bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5  dark:text-white " placeholder="90210" required />
 
 
 
 
-  <label for="countries" class="block mb-2 text-sm font-medium text-white dark:text-white">Select an option</label>
-  <select id="countries" class="bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5">
+  <label for="countries" className="block mb-2 text-sm font-medium text-white dark:text-white">Select an option</label>
+  <select id="countries" className="bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5">
     <option selected>Choose a country</option>
     <option value="US">United States</option>
     <option value="CA">Canada</option>
