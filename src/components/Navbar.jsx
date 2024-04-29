@@ -4,7 +4,7 @@ import { MdAccountBalance } from "react-icons/md";
 const Navbar = () => {
   return (
     <>
-      <nav className="fixed top-0 z-50 w-full  bg-[#000000] dark:border-gray-700 font-montserrat">
+      <nav className="fixed top-0 z-50 w-full  bg-[#000000]  font-montserrat">
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start rtl:justify-end">
@@ -123,10 +123,10 @@ const Navbar = () => {
 
       <aside
         id="logo-sidebar"
-        className="fixed top-0 left-0 w-64 h-screen pt-20 transition-transform -translate-x-full bg-[#000000] md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        className="fixed top-0 left-0 w-64 h-full pt-20 transition-transform -translate-x-full bg-[#000000] md:translate-x-0 z-10"
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 pb-4 overflow-y-auto bg-[#000000] dark:bg-gray-800">
+        <div className="h-full px-3 pb-4 overflow-y-auto bg-[#000000] ">
           <div className="flex flex-col justify-center gap-4 ">
             <div className="items-center flex justify-center">
               <img
@@ -163,7 +163,7 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="absolute bottom-0 mb-5">
-        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Spend Wise™</a> <br />By: Garvit Bansal. All Rights Reserved.</span>
+        <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" className="hover:underline">Spend Wise™</a> <br />By: Garvit Bansal. All Rights Reserved.</span>
           </div>
         </div>
       </aside>

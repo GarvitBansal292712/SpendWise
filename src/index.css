@@ -2,15 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
-body{
-    background-color: #333333;
+body {
+  background-color: #ffffffca;
 }
 
+
+
+
+
+.chartbox {
+    width: 100%;
+    height: auto;
+    min-height: 150px; /* Adjust as needed for mobile */
+  }
+  
+  /* For larger mobile devices */
+  @media (min-width: 480px) {
+    .chartbox {
+      min-height: 200px; /* Adjust as needed */
+    }
+  }
+  
+  /* For tablets */
+  @media (min-width: 768px) {
+    .chartbox {
+      width: 75%;
+      min-height: 250px; /* Adjust as needed */
+    }
+  }
+  
+  /* For small laptops */
+  @media (min-width: 1024px) {
+    .chartbox {
+      width: 60%;
+      min-height: 300px; /* Adjust as needed */
+    }
+  }
+  
+  /* For large laptops and desktops */
+  @media (min-width: 1200px) {
+    .chartbox {
+      width: 50%;
+      min-height: 350px; /* Adjust as needed */
+    }
+  }
 
