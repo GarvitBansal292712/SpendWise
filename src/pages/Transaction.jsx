@@ -1,45 +1,147 @@
-import React from 'react'
-
+import React from "react";
+import { useState } from "react";
 const Transaction = () => {
+  const [activeForm, setActiveForm] = useState("income");
+  const currentDate = new Date();
+
+  // Format the date as a string
+  const dateString = `${currentDate.getDate()}-${currentDate.getMonth() + 1}-${currentDate.getFullYear()}`;
+
   return (
-<>
+    <>
+      <div className="md:ml-[256px] mt-[200px] flex justify-center">
+        <form className=" mx-5 bg-[#1a1a1a] backdrop-blur-lg p-8 rounded-2xl w-[400px] text-white">
+          <h1 className="text-center text-[2rem] leading-10 mb-4">
+            Add Your <i>Income</i> OR <i>Expense</i>
+          </h1>
 
-<div className='md:ml-[256px] mt-[200px] flex justify-center'>
+          <div className="flex justify-center my-2">
+            <button
+              onClick={() => setActiveForm("income")}
+              className={`px-4 py-2  bg-[#1cdbcb] rounded-l-3xl hover:text-black border-r-[1px] ${
+                activeForm === "income" ? "bg-white text-black" : "bg-[#1cdbcb]"
+              }`}
+            >
+              Income
+            </button>
+            <button
+              onClick={() => setActiveForm("expense")}
+              className={`px-4 py-2 bg-[#1cdbcb] rounded-r-3xl hover:text-black border-l-[1px] ${
+                activeForm === "expense"
+                  ? "bg-white text-black"
+                  : "bg-[#1cdbcb]"
+              }`}
+            >
+              Expense
+            </button>
+          </div>
 
-<form className=" mx-5 bg-[#1a1a1a] backdrop-blur-lg p-8 rounded-2xl w-[400px] text-white">
-    <h1 className='text-center text-[2rem] leading-10 mb-4'>
-        Add Your <i>Income</i> OR <i>Expense</i>
-    </h1>
+          {/* Input form for Income */}
+          {activeForm === "income" && (
+            <>
+              <label
+                htmlFor="number-input"
+                className="block mb-2 text-sm font-medium text-white dark:text-white"
+              >
+                Amount of Income:
+              </label>
+              <input
+                type="number"
+                min={1}
+                id="number-input"
+                aria-describedby="helper-text-explanation"
+                className="mb-5 bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5  dark:text-white "
+                placeholder="Enter Your Amount"
+                required
+              />
 
+              <label
+                htmlFor="countries"
+                className="block mb-2 text-sm font-medium text-white dark:text-white"
+              >
+                Type of Income
+              </label>
+              <select
+                id="income"
+                className="bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5"
+              >
+                <option value="Salary/Wages">Salary/Wages</option>
+                <option value="Freelance/Consulting">
+                  Freelance/Consulting
+                </option>
+                <option value="Investment Income">Investment Income </option>
+                <option value="Rental Income">Rental Income</option>
+                <option value="Business Profits">Business Profits</option>
+                <option value="Bonuses/Commissions">Bonuses/Commissions</option>
+                <option value="Grants/Scholarships">Grants/Scholarships</option>
+                <option value="Gifts/Inheritance">Gifts/Inheritance</option>
+                <option value="Side Hustle Income">Side Hustle Income</option>
+                <option value="Alimony/Child Support">
+                  Alimony/Child Support
+                </option>
+              </select>
+            </>
+          )}
 
-    <label for="number-input" className="block mb-2 text-sm font-medium text-white dark:text-white">Select a number:</label>
-    <input type="number" min={1} id="number-input" aria-describedby="helper-text-explanation" className="mb-5 bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5  dark:text-white " placeholder="90210" required />
+          {/* Input form for Expense */}
+          {activeForm === "expense" && (
+            <>
+              <label
+                htmlFor="number-input"
+                className="block mb-2 text-sm font-medium text-white dark:text-white"
+              >
+                Amount of Expense:
+              </label>
+              <input
+                type="number"
+                min={1}
+                id="number-input"
+                aria-describedby="helper-text-explanation"
+                className="mb-5 bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5  dark:text-white "
+                placeholder="Enter Your Amount"
+                required
+              />
 
+              <label
+                htmlFor="countries"
+                className="block mb-2 text-sm font-medium text-white dark:text-white"
+              >
+                Type of Expense
+              </label>
+              <select
+                id="expense"
+                className="bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5"
+              >
+                <option value="Groceries">Groceries</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Utilities">Utilities</option>
+                <option value="Dining Out">Dining Out</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Housing">Housing</option>
+                <option value="Clothing and Accessories">
+                  Clothing and Accessories
+                </option>
+                <option value="Education">Education</option>
+                <option value="Miscellaneous">Miscellaneous</option>
+              </select>
+            </>
+          )}
 
+          <h1 className="my-4 text-[#ffffff60]">Today's Date: {dateString}</h1>
 
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="text-white my-2 bg-[#1cdbcb] hover:bg-[#1cdbcb8f] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Submit Entry
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
+  );
+};
 
-  <label for="countries" className="block mb-2 text-sm font-medium text-white dark:text-white">Select an option</label>
-  <select id="countries" className="bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5">
-    <option selected>Choose a country</option>
-    <option value="US">United States</option>
-    <option value="CA">Canada</option>
-    <option value="FR">France</option>
-    <option value="DE">Germany</option>
-  </select>
-
-<h1 className='my-4 text-[#ffffff60]'>
-
-  Today's Date: 27-01-2003 
-</h1>
-
-<div className='flex justify-center'>
-
-  <button type="submit" className="text-white my-2 bg-[#1cdbcb] hover:bg-[#1cdbcb8f] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit Entry</button>
-</div>
-</form>
-</div>
-
-</>  
-)}
-
-export default Transaction
+export default Transaction;

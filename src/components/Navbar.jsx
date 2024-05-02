@@ -1,7 +1,24 @@
+import { useEffect } from "react";
 import React from "react";
-import logo from "../assets/image/logo.png"
+import logo from "../assets/image/logo.png";
 import { MdAccountBalance } from "react-icons/md";
+import { Link, NavLink } from "react-router-dom";
+import { MdMenu, MdClose } from "react-icons/md";
+
 const Navbar = () => {
+  useEffect(() => {
+    const button = document.querySelector(
+      '[data-drawer-toggle="logo-sidebar"]'
+    );
+    button.addEventListener("click", () => {
+      setTimeout(() => {
+        const backdrop = document.querySelector("[drawer-backdrop]");
+        if (backdrop) {
+          backdrop.style.backgroundColor = "rgba(0, 0, 0, 0.1)"; // Change this to your preferred color
+        }
+      }, 0);
+    });
+  }, []);
   return (
     <>
       <nav className="fixed top-0 z-50 w-full  bg-[#000000]  font-montserrat">
@@ -31,11 +48,7 @@ const Navbar = () => {
                 </svg>
               </button>
               <a href="#" className="flex ms-2 md:me-24">
-                <img
-                  src={logo}
-                  className="h-8 me-3"
-                  alt="FlowBite Logo"
-                />
+                <img src={logo} className="h-8 me-3" alt="FlowBite Logo" />
                 <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white">
                   Spend Wise
                 </span>
@@ -121,52 +134,60 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <aside
-        id="logo-sidebar"
-        className="fixed top-0 left-0 w-64 h-full pt-20 transition-transform -translate-x-full bg-[#000000] md:translate-x-0 z-10"
-        aria-label="Sidebar"
-      >
-        <div className="h-full px-3 pb-4 overflow-y-auto bg-[#000000] ">
-          <div className="flex flex-col justify-center gap-4 ">
-            <div className="items-center flex justify-center">
-              <img
-                className="w-40 h-40 rounded-full"
-                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                alt="user photo"
-              />
+        <aside
+          id="logo-sidebar"
+          className="fixed top-0 left-0 w-64 h-full pt-20 transition-transform -translate-x-full bg-[#000000] md:translate-x-0 z-10"
+          aria-label="Sidebar"
+        >
+          <div className="h-full px-3 pb-4 overflow-y-auto bg-[#000000] ">
+            <div className="flex flex-col justify-center gap-4 ">
+              <div className="items-center flex justify-center">
+                <img
+                  className="w-40 h-40 rounded-full"
+                  src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  alt="user photo"
+                />
+              </div>
+              <div>
+                <h1 className="bg-[#1a1a1a] text-white p-2 flex items-center justify-center text-lg rounded-3xl gap-4 shadow-white">
+                  <MdAccountBalance size={20} />
+                  $5,380
+                </h1>
+              </div>
             </div>
-            <div>
-              <h1 className="bg-[#1a1a1a] text-white p-2 flex items-center justify-center text-lg rounded-3xl gap-4">
-                <MdAccountBalance size={20} />
-                $5,380
-              </h1>
-            </div>
-          </div>
 
-          <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
-          <ul className="space-y-2 font-medium ">
-            <li className="">
-              <a
-                href="#"
-                className="flex justify-center items-center p-2  rounded-3xl bg-[#1a1a1a] text-white hover:text-black hover:bg-[#1cdbcb] text-center  group"
-              >
-                <span className="ms-3">Dashboard</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex justify-center items-center p-2  rounded-3xl bg-[#1a1a1a] text-white hover:text-black hover:bg-[#1cdbcb] text-center group"
-              >
-                <span className="ms-3">Transactions</span>
-              </a>
-            </li>
-          </ul>
-          <div className="absolute bottom-0 mb-5">
-        <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" className="hover:underline">Spend Wise™</a> <br />By: Garvit Bansal. All Rights Reserved.</span>
+            <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 " />
+            <ul className="space-y-2 font-medium ">
+              <li className="">
+                <NavLink
+                  to="/"
+                  className="flex justify-center items-center p-2  rounded-3xl bg-[#1a1a1a] text-white hover:text-black hover:bg-[#1cdbcb] text-center  group"
+                >
+                  <span className="ms-3">Dashboard</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/transaction"
+                  className="flex justify-center items-center p-2  rounded-3xl bg-[#1a1a1a] text-white hover:text-black hover:bg-[#1cdbcb] text-center group"
+                >
+                  <span className="ms-3">Transactions</span>
+                </NavLink>
+              </li>
+            </ul>
+            <div className="absolute bottom-0 mb-5">
+              <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
+                © 2023{" "}
+                <a href="https://flowbite.com/" className="hover:underline">
+                  Spend Wise™
+                </a>{" "}
+                <br />
+                By: Garvit Bansal. All Rights Reserved.
+              </span>
+            </div>
           </div>
-        </div>
-      </aside>
+        </aside>
+
     </>
   );
 };
