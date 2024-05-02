@@ -2,38 +2,55 @@ import React from "react";
 import { useState } from "react";
 const Transaction = () => {
   const [activeForm, setActiveForm] = useState("income");
+  const [amount, setAmount] = useState("");
+  const  [type, setType] = useState("");
   const currentDate = new Date();
 
-  // Format the date as a string
-  const dateString = `${currentDate.getDate()}-${currentDate.getMonth() + 1}-${currentDate.getFullYear()}`;
 
+  //Converting Month to Month Name 
+  const monthNames = ["January", "February", "March", "April", "May","June","July", "August", "September", "October", "November","December"];
+
+  // Format the date as a string
+  const dateString = `${currentDate.getFullYear()}-${monthNames[currentDate.getMonth()+1]}-${currentDate.getDate()}`;
+const monthName = monthNames[currentDate.getMonth()+1];
+
+
+  const handleSubmit= (e)=>{
+    e.preventDefault();
+    console.log("Amount: ", amount);
+    console.log("Type: ", type);
+    console.log("Date: ", monthName);
+    setType("")
+    setAmount("")
+  }
   return (
     <>
       <div className="md:ml-[256px] mt-[200px] flex justify-center">
-        <form className=" mx-5 bg-[#1a1a1a] backdrop-blur-lg p-8 rounded-2xl w-[400px] text-white">
-          <h1 className="text-center text-[2rem] leading-10 mb-4">
+        <form onSubmit={handleSubmit} className=" mx-5 bg-[#1a1a1a] backdrop-blur-lg p-8 rounded-2xl w-[400px] text-white">
+          <h1 
+           className="text-center text-[2rem] leading-10 mb-4">
             Add Your <i>Income</i> OR <i>Expense</i>
           </h1>
 
           <div className="flex justify-center my-2">
-            <button
+            <a
               onClick={() => setActiveForm("income")}
-              className={`px-4 py-2  bg-[#1cdbcb] rounded-l-3xl hover:text-black border-r-[1px] ${
+              className={`px-4 py-2  cursor-pointer bg-[#1cdbcb] rounded-l-3xl hover:text-black border-r-[1px] ${
                 activeForm === "income" ? "bg-white text-black" : "bg-[#1cdbcb]"
               }`}
             >
               Income
-            </button>
-            <button
+            </a>
+            <a
               onClick={() => setActiveForm("expense")}
-              className={`px-4 py-2 bg-[#1cdbcb] rounded-r-3xl hover:text-black border-l-[1px] ${
+              className={`px-4 py-2 cursor-pointer bg-[#1cdbcb] rounded-r-3xl hover:text-black border-l-[1px] ${
                 activeForm === "expense"
                   ? "bg-white text-black"
                   : "bg-[#1cdbcb]"
               }`}
             >
               Expense
-            </button>
+            </a>
           </div>
 
           {/* Input form for Income */}
@@ -48,11 +65,12 @@ const Transaction = () => {
               <input
                 type="number"
                 min={1}
+                value={amount}
+                onChange={(e)=> setAmount(e.target.value)}
                 id="number-input"
                 aria-describedby="helper-text-explanation"
                 className="mb-5 bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5  dark:text-white "
                 placeholder="Enter Your Amount"
-                required
               />
 
               <label
@@ -63,7 +81,9 @@ const Transaction = () => {
               </label>
               <select
                 id="income"
-                className="bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5"
+                className="bg-[#111111] cursor-pointer border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5"
+                value={type}
+                onChange={(e)=> setType(e.target.value)}
               >
                 <option value="Salary/Wages">Salary/Wages</option>
                 <option value="Freelance/Consulting">
@@ -95,11 +115,12 @@ const Transaction = () => {
               <input
                 type="number"
                 min={1}
+                value={amount}
+                onChange={(e)=> setAmount(e.target.value)}
                 id="number-input"
                 aria-describedby="helper-text-explanation"
                 className="mb-5 bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5  dark:text-white "
                 placeholder="Enter Your Amount"
-                required
               />
 
               <label
@@ -110,7 +131,10 @@ const Transaction = () => {
               </label>
               <select
                 id="expense"
-                className="bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5"
+                className="bg-[#111111] cursor-pointer border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5"
+                value={type}
+                onChange={(e)=> setType(e.target.value)}
+
               >
                 <option value="Groceries">Groceries</option>
                 <option value="Transportation">Transportation</option>
