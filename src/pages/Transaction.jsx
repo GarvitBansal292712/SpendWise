@@ -1,34 +1,54 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
+import {TransactionContext} from "../context/TransactionContext"
 const Transaction = () => {
   const [activeForm, setActiveForm] = useState("income");
   const [amount, setAmount] = useState("");
-  const  [type, setType] = useState("");
+  const [type, setType] = useState("");
   const currentDate = new Date();
-
-
-  //Converting Month to Month Name 
-  const monthNames = ["January", "February", "March", "April", "May","June","July", "August", "September", "October", "November","December"];
+  const {addTransaction}  = useContext(TransactionContext)
+  //Converting Month to Month Name
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
   // Format the date as a string
-  const dateString = `${currentDate.getFullYear()}-${monthNames[currentDate.getMonth()+1]}-${currentDate.getDate()}`;
-const monthName = monthNames[currentDate.getMonth()+1];
+  const dateString = `${currentDate.getFullYear()}-${monthNames[currentDate.getMonth() + 1]}-${currentDate.getDate()}`;
+  const monthName = monthNames[currentDate.getMonth() + 1];
 
-
-  const handleSubmit= (e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault();
+    const transaction = {
+      month: monthName,
+      type: type,
+      amount: amount,
+    }
+    addTransaction(transaction)
     console.log("Amount: ", amount);
     console.log("Type: ", type);
     console.log("Date: ", monthName);
-    setType("")
-    setAmount("")
-  }
+    setType("");
+    setAmount("");
+  };
   return (
     <>
       <div className="md:ml-[256px] mt-[200px] flex justify-center">
-        <form onSubmit={handleSubmit} className=" mx-5 bg-[#1a1a1a] backdrop-blur-lg p-8 rounded-2xl w-[400px] text-white">
-          <h1 
-           className="text-center text-[2rem] leading-10 mb-4">
+        <form
+          onSubmit={handleSubmit}
+          className=" mx-5 bg-[#1a1a1a] backdrop-blur-lg p-8 rounded-2xl w-[400px] text-white"
+        >
+          <h1 className="text-center text-[2rem] leading-10 mb-4">
             Add Your <i>Income</i> OR <i>Expense</i>
           </h1>
 
@@ -66,7 +86,7 @@ const monthName = monthNames[currentDate.getMonth()+1];
                 type="number"
                 min={1}
                 value={amount}
-                onChange={(e)=> setAmount(e.target.value)}
+                onChange={(e) => setAmount(e.target.value)}
                 id="number-input"
                 aria-describedby="helper-text-explanation"
                 className="mb-5 bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5  dark:text-white "
@@ -83,7 +103,7 @@ const monthName = monthNames[currentDate.getMonth()+1];
                 id="income"
                 className="bg-[#111111] cursor-pointer border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5"
                 value={type}
-                onChange={(e)=> setType(e.target.value)}
+                onChange={(e) => setType(e.target.value)}
               >
                 <option value="Salary/Wages">Salary/Wages</option>
                 <option value="Freelance/Consulting">
@@ -116,7 +136,7 @@ const monthName = monthNames[currentDate.getMonth()+1];
                 type="number"
                 min={1}
                 value={amount}
-                onChange={(e)=> setAmount(e.target.value)}
+                onChange={(e) => setAmount(e.target.value)}
                 id="number-input"
                 aria-describedby="helper-text-explanation"
                 className="mb-5 bg-[#111111] border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5  dark:text-white "
@@ -133,8 +153,7 @@ const monthName = monthNames[currentDate.getMonth()+1];
                 id="expense"
                 className="bg-[#111111] cursor-pointer border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5"
                 value={type}
-                onChange={(e)=> setType(e.target.value)}
-
+                onChange={(e) => setType(e.target.value)}
               >
                 <option value="Groceries">Groceries</option>
                 <option value="Transportation">Transportation</option>
