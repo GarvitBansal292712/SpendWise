@@ -11,7 +11,7 @@ function App() {
     <>
     <TransactionProvider>
 
-    <BrowserRouter basename='/'>
+    <BrowserRouter basename='/SpendWise/'>
 
      <Navbar/>
      <Routes>
