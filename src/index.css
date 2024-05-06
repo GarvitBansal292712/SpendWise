@@ -14,7 +14,23 @@ body {
 }
 
 
+/* This will affect the scrollbar globally */
+::-webkit-scrollbar {
+  width: 5px; /* Adjust scrollbar width */
+  border-radius: 10px;
+}
 
+::-webkit-scrollbar-track {
+  background: #f1f1f100; /* Adjust track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000; /* Adjust thumb color */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff8c00b3; /* Adjust thumb color when hovering */
+}
 
 
 .chartbox {

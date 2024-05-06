@@ -25,12 +25,13 @@ const Transaction = () => {
 
   // Format the date as a string
   const dateString = `${currentDate.getFullYear()}-${monthNames[currentDate.getMonth() + 1]}-${currentDate.getDate()}`;
-  const monthName = monthNames[currentDate.getMonth() + 1];
+  const monthName = monthNames[currentDate.getMonth()];
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const transaction = {
       month: monthName,
+      category: activeForm,
       type: type,
       amount: amount,
     }
@@ -38,6 +39,7 @@ const Transaction = () => {
     console.log("Amount: ", amount);
     console.log("Type: ", type);
     console.log("Date: ", monthName);
+    console.log("Category: ", activeForm);
     setType("");
     setAmount("");
   };
@@ -104,7 +106,10 @@ const Transaction = () => {
                 className="bg-[#111111] cursor-pointer border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5"
                 value={type}
                 onChange={(e) => setType(e.target.value)}
+                required
               >
+
+                <option value="">Select a type</option>
                 <option value="Salary/Wages">Salary/Wages</option>
                 <option value="Freelance/Consulting">
                   Freelance/Consulting
@@ -154,7 +159,9 @@ const Transaction = () => {
                 className="bg-[#111111] cursor-pointer border border-gray-300 text-white text-sm rounded-lg  block w-full p-2.5"
                 value={type}
                 onChange={(e) => setType(e.target.value)}
+                required
               >
+                <option value="">Select a type</option>
                 <option value="Groceries">Groceries</option>
                 <option value="Transportation">Transportation</option>
                 <option value="Utilities">Utilities</option>
