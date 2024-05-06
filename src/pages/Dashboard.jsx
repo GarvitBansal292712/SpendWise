@@ -142,7 +142,7 @@ const Dashboard = () => {
         <div className="flex justify-evenly mt-8 flex-wrap chartscont w-full mx-auto">
           <div className="relative mx-auto chartbox ">
             <Chart
-              className="m-4 -z-10"
+              className="m-4 h-[50vh] -z-10"
               options={options}
               data={lineGraphData}
               type="line"
@@ -182,7 +182,9 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {transactions.map((transaction, index) => (
+            {transactions.length > 0 ? (
+
+              transactions.map((transaction, index) => (
                 <tr
                   key={index}
                   className={`border-b border-gray-200 text-white ${
@@ -202,8 +204,13 @@ const Dashboard = () => {
                   </td>
                   <td className="px-6 py-4">₹{transaction.amount}</td>
                 </tr>
-              ))}
-            </tbody>
+              ))
+            ):(  <tr>
+              <td colSpan="5" className="px-6 py-4 text-center text-white-900">
+                No transactions found.
+              </td>
+            </tr>
+          )}</tbody>
           </table>
           {/* </div> */}
         </div>

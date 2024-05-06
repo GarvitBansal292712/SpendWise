@@ -36,10 +36,10 @@ const Transaction = () => {
       amount: amount,
     }
     addTransaction(transaction)
-    console.log("Amount: ", amount);
-    console.log("Type: ", type);
-    console.log("Date: ", monthName);
-    console.log("Category: ", activeForm);
+    // console.log("Amount: ", amount);
+    // console.log("Type: ", type);
+    // console.log("Date: ", monthName);
+    // console.log("Category: ", activeForm);
     setType("");
     setAmount("");
   };
